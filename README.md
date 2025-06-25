@@ -61,11 +61,11 @@ This project addresses the challenges of high computational cost and memory requ
 * **Training Resumption:** Automatically detects and resumes training from the latest checkpoint if the process is interrupted.
 
 ---
-
 ## 3. Technical Architecture
 
 LoRA-Tune operates as a single-script framework, orchestrating various components from the Hugging Face ecosystem and related libraries to achieve efficient LLM fine-tuning.
 
+```text
 +------------------------------------+
 |                                    |
 |         LoRA-Tune Framework        |
