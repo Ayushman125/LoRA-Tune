@@ -1,0 +1,42 @@
+# Python cache and compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python/
+env/
+venv/                  # Virtual environment folder (you deleted it, but this keeps future venvs ignored)
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+.mypy_cache/
+
+# Deep Learning & Hugging Face artifacts
+llm_finetuning_results/    # Trainer outputs, checkpoints, logs
+final_lora_adapters/       # LoRA adapters (model weights)
+merged_fine_tuned_model/   # Merged fine-tuned full model
+bitsandbytes/              # Built version of bitsandbytes
+*.pt                       # PyTorch model states
+*.bin                      # Binary model files
+*.safetensors              # Safe model serialization
+*.pickle
+
+# wandb, TensorBoard, etc.
+wandb/
+runs/
+
+# Images — allow one specific plot
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+!/docs/images/training_metrics_plot.png
+
+# OS & editor-specific files
+.DS_Store
+Thumbs.db
+
+# Environment variables and secrets
+*.env
+.env
