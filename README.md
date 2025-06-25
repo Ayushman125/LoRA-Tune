@@ -1,4 +1,3 @@
-```markdown
 # LoRA-Tune: Efficient Quantized Language Model Adaptation
 
 ## **Accelerating Domain-Specific LLM Fine-tuning with QLoRA**
@@ -67,47 +66,44 @@ This project addresses the challenges of high computational cost and memory requ
 
 LoRA-Tune operates as a single-script framework, orchestrating various components from the Hugging Face ecosystem and related libraries to achieve efficient LLM fine-tuning.
 
-```
-
-\+------------------------------------+
++------------------------------------+
 |                                    |
 |         LoRA-Tune Framework        |
 |                                    |
-\+------------------------+-----------+
++------------------------+-----------+
 | 1. Model & Tokenizer   |
 |    Loading             |
-|    (Hugging Face)      |\<--- Pre-trained LLM (e.g., distilgpt2)
-\+------------------------+-----------+
+|    (Hugging Face)      |<--- Pre-trained LLM (e.g., distilgpt2)
++------------------------+-----------+
 | 2. 4-bit Quantization  |
 |    (bitsandbytes)      |
-\+------------------------+-----------+
++------------------------+-----------+
 | 3. PEFT (LoRA) Layer   |
 |    Insertion           |
 |    (PEFT Library)      |
-\+------------------------+-----------+
++------------------------+-----------+
 | 4. Dataset Loading &   |
-|    Preprocessing       |\<--- Custom Text Dataset (e.g., English Quotes)
+|    Preprocessing       |<--- Custom Text Dataset (e.g., English Quotes)
 |    (Hugging Face Datasets) |
-\+------------------------+-----------+
++------------------------+-----------+
 | 5. Training Loop       |
 |    (Hugging Face Trainer)|
 |    - Gradient Checkpointing |
 |    - Paged Optimizers   |
 |    - Checkpoint Resumption|
-\+------------------------+-----------+
++------------------------+-----------+
 | 6. Model & Adapter     |
 |    Saving              |
 |    - LoRA Adapters      |
 |    - Optional Merged Model |
-\+------------------------+-----------+
++------------------------+-----------+
 | 7. Inference & Text    |
 |    Generation          |
-\+------------------------+-----------+
++------------------------+-----------+
 | 8. Metrics Plotting    |
 |    (Matplotlib)        |
-\+------------------------+-----------+
++------------------------+-----------+
 
-````
 
 **Key Components & Data Flow:**
 
@@ -368,77 +364,64 @@ To illustrate the impact of fine-tuning, observe the difference in text generati
 
   ```text
   The best quote about wisdom is: the one that teaches us that even when we are tired, we can still choose to be happy. This is a very useful thing to remember.
-````
+(Example: The base model's output tends to be more generic and less aligned with the stylistic nuances of the fine-tuning dataset.)
 
-*(Example: The base model's output tends to be more generic and less aligned with the stylistic nuances of the fine-tuning dataset.)*
+LoRA-Tune Fine-tuned Model Generation (After Fine-tuning on Abirate/english_quotes):
 
-**LoRA-Tune Fine-tuned Model Generation (After Fine-tuning on `Abirate/english_quotes`):**
+Prompt: "The best quote about wisdom is: "
 
-  * **Prompt:** `"The best quote about wisdom is: "`
+Generated Text:
 
-  * **Generated Text:**
+Plaintext
 
-    ```text
-    The best quote about wisdom is: It is easy to see, but it is hard to forget. The only thing you can ever teach is that you don't have to be perfect.”
-    ```
+The best quote about wisdom is: It is easy to see, but it is hard to forget. The only thing you can ever teach is that you don't have to be perfect.”
+(Example: The fine-tuned output demonstrably reflects the style, themes, and linguistic patterns present in the Abirate/english_quotes dataset, showing successful adaptation to generate quote-like content.)
 
-    *(Example: The fine-tuned output demonstrably reflects the style, themes, and linguistic patterns present in the `Abirate/english_quotes` dataset, showing successful adaptation to generate quote-like content.)*
-
-### 7.3 Resource Efficiency
-
+7.3 Resource Efficiency
 Leveraging QLoRA, this project demonstrates significant resource benefits:
 
-  * **Memory Footprint Reduction:** Achieved fine-tuning with a 4-bit quantized base model, significantly reducing GPU VRAM consumption by approximately 3x compared to equivalent 16-bit fine-tuning, making it viable on GPUs with limited memory (e.g., 8GB or 12GB).
+Memory Footprint Reduction: Achieved fine-tuning with a 4-bit quantized base model, significantly reducing GPU VRAM consumption by approximately 3x compared to equivalent 16-bit fine-tuning, making it viable on GPUs with limited memory (e.g., 8GB or 12GB).
 
-  * **Parameter Efficiency:** The LoRA adapters comprise a remarkably small percentage of the total model parameters, typically less than 0.1%. For `distilgpt2` (approx. 82M parameters), LoRA training updates only `811,008` parameters, allowing for extremely fast training times and compact storage of fine-tuned models.
+Parameter Efficiency: The LoRA adapters comprise a remarkably small percentage of the total model parameters, typically less than 0.1%. For distilgpt2 (approx. 82M parameters), LoRA training updates only 811,008 parameters, allowing for extremely fast training times and compact storage of fine-tuned models.
 
-## 8\. Roadmap and Future Enhancements
+8. Roadmap and Future Enhancements
+Multi-GPU/Distributed Training: Explore integration with DeepSpeed or FSDP for scaling training to multiple GPUs or nodes.
 
-  * **Multi-GPU/Distributed Training:** Explore integration with DeepSpeed or FSDP for scaling training to multiple GPUs or nodes.
+Support for More LLM Architectures: Expand compatibility to a broader range of LLMs (e.g., Llama, Mistral, Falcon) and ensure optimal target_modules selection for LoRA.
 
-  * **Support for More LLM Architectures:** Expand compatibility to a broader range of LLMs (e.g., Llama, Mistral, Falcon) and ensure optimal `target_modules` selection for LoRA.
+Advanced Evaluation Metrics: Incorporate automated evaluation metrics beyond loss, such as ROUGE (for summarization), BLEU/METEOR (for translation), or specific domain-relevant metrics.
 
-  * **Advanced Evaluation Metrics:** Incorporate automated evaluation metrics beyond loss, such as ROUGE (for summarization), BLEU/METEOR (for translation), or specific domain-relevant metrics.
+Web Interface for Interaction: Develop a simple web UI (e.g., using Gradio or Streamlit) for easier model inference and interaction.
 
-  * **Web Interface for Interaction:** Develop a simple web UI (e.g., using Gradio or Streamlit) for easier model inference and interaction.
+Model Quantization Options: Add support for other quantization schemes (e.g., 8-bit, dynamic quantization).
 
-  * **Model Quantization Options:** Add support for other quantization schemes (e.g., 8-bit, dynamic quantization).
+Hyperparameter Optimization: Integrate tools for automated LoRA hyperparameter tuning (e.g., Optuna, Ray Tune).
 
-  * **Hyperparameter Optimization:** Integrate tools for automated LoRA hyperparameter tuning (e.g., Optuna, Ray Tune).
+9. Contributing Guidelines
+We welcome contributions to enhance LoRA-Tune! If you're interested in contributing, please follow these guidelines:
 
-## 9\. Contributing Guidelines
+Fork the repository and create your branch from main.
 
-We welcome contributions to enhance LoRA-Tune\! If you're interested in contributing, please follow these guidelines:
+Feature Requests/Bug Reports: Open an issue first to discuss the proposed changes or report any bugs.
 
-1.  **Fork the repository** and create your branch from `main`.
+Code Quality: Ensure your code adheres to PEP 8 standards for Python. Use linters like flake8 or black.
 
-2.  **Feature Requests/Bug Reports:** Open an issue first to discuss the proposed changes or report any bugs.
+Testing: Write unit and integration tests for new features.
 
-3.  **Code Quality:** Ensure your code adheres to PEP 8 standards for Python. Use linters like `flake8` or `black`.
+Commit Messages: Use clear and descriptive commit messages (e.g., following Conventional Commits).
 
-4.  **Testing:** Write unit and integration tests for new features.
-
-5.  **Commit Messages:** Use clear and descriptive commit messages (e.g., following Conventional Commits).
-
-6.  **Pull Requests:** Submit a pull request with a detailed description of your changes.
+Pull Requests: Submit a pull request with a detailed description of your changes.
 
 For major changes, please open an issue first to discuss what you would like to change.
 
-## 10\. License
+10. License
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-This project is licensed under the **MIT License** - see the [LICENSE](https://www.google.com/search?q=LICENSE) file for details.
-
-## 11\. Contact and Support
-
+11. Contact and Support
 For questions, issues, or professional inquiries, please feel free to reach out:
 
-  * **Author:** [Ayushman Saini]
+Author: [Ayushman Saini]
 
-  * **LinkedIn:** [Your LinkedIn Profile URL](https://www.linkedin.com/in/your-profile)
+LinkedIn: Your LinkedIn Profile URL
 
-  * **Email:** [ayushmansaini120@gmail.com](mailto:ayushmansaini120@gmail.com)
-
-<!-- end list -->
-
-```
-```
+Email: ayushmansaini120@gmail.com
