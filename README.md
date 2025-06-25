@@ -422,6 +422,7 @@ For questions, issues, or professional inquiries, please feel free to reach out:
 
 Author: [Ayushman Saini]
 
-LinkedIn: Your LinkedIn Profile URL
+LinkedIn: www.linkedin.com/in/ayushman-saini-309a7421a
 
 Email: ayushmansaini120@gmail.com
+ ```text
