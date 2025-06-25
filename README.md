@@ -344,8 +344,6 @@ The effectiveness of LoRA-Tune is demonstrated through quantitative training met
 
 ### 7.1 Training Loss Curves
 
-*(This plot will appear automatically on GitHub if you have run the training script and the `training_metrics_plot.png` file is located at `./docs/images/training_metrics_plot.png` within your repository.)*
-
 ![Training and Evaluation Loss Plot](./docs/images/training_metrics_plot.png)
 
 *Figure 1: Plot of Training Loss (Blue) and Evaluation Loss (Orange, dashed) over training steps. A consistent downward trend indicates successful model convergence and adaptation to the target dataset.*
