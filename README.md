@@ -104,7 +104,7 @@ LoRA-Tune operates as a single-script framework, orchestrating various component
 |    (Matplotlib)        |
 +------------------------+-----------+
 
-```text
+```
 **Key Components & Data Flow:**
 
 1.  **Base Model & Tokenizer:** A pre-trained causal language model (e.g., `distilgpt2`) and its corresponding tokenizer are loaded from the Hugging Face Hub.
@@ -423,4 +423,4 @@ Author: [Ayushman Saini]
 LinkedIn: www.linkedin.com/in/ayushman-saini-309a7421a
 
 Email: ayushmansaini120@gmail.com
- ```text
+ 
