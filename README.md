@@ -341,6 +341,7 @@ The effectiveness of LoRA-Tune is demonstrated through quantitative training met
     * Copy the `Generated Text` from your console output.
 
     * **Action:** Paste this text into the "LoRA-Tune Fine-tuned Model Generation" section below, replacing the placeholder comment.
+      
 
 ### 7.1 Training Loss Curves
 
@@ -374,7 +375,7 @@ Plaintext
 
 The best quote about wisdom is: It is easy to see, but it is hard to forget. The only thing you can ever teach is that you don't have to be perfect.”
 (Example: The fine-tuned output demonstrably reflects the style, themes, and linguistic patterns present in the Abirate/english_quotes dataset, showing successful adaptation to generate quote-like content.)
-
+ 
 7.3 Resource Efficiency
 Leveraging QLoRA, this project demonstrates significant resource benefits:
 
@@ -382,7 +383,7 @@ Memory Footprint Reduction: Achieved fine-tuning with a 4-bit quantized base mod
 
 Parameter Efficiency: The LoRA adapters comprise a remarkably small percentage of the total model parameters, typically less than 0.1%. For distilgpt2 (approx. 82M parameters), LoRA training updates only 811,008 parameters, allowing for extremely fast training times and compact storage of fine-tuned models.
 
-8. Roadmap and Future Enhancements
+##8. Roadmap and Future Enhancements
 Multi-GPU/Distributed Training: Explore integration with DeepSpeed or FSDP for scaling training to multiple GPUs or nodes.
 
 Support for More LLM Architectures: Expand compatibility to a broader range of LLMs (e.g., Llama, Mistral, Falcon) and ensure optimal target_modules selection for LoRA.
@@ -395,7 +396,7 @@ Model Quantization Options: Add support for other quantization schemes (e.g., 8-
 
 Hyperparameter Optimization: Integrate tools for automated LoRA hyperparameter tuning (e.g., Optuna, Ray Tune).
 
-9. Contributing Guidelines
+##9. Contributing Guidelines
 We welcome contributions to enhance LoRA-Tune! If you're interested in contributing, please follow these guidelines:
 
 Fork the repository and create your branch from main.
@@ -412,10 +413,10 @@ Pull Requests: Submit a pull request with a detailed description of your changes
 
 For major changes, please open an issue first to discuss what you would like to change.
 
-10. License
+##10. License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-11. Contact and Support
+##11. Contact and Support
 For questions, issues, or professional inquiries, please feel free to reach out:
 
 Author: [Ayushman Saini]
